@@ -1,0 +1,120 @@
+.pa-footer {
+    padding-top: rem(88px);
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    bottom: 0;
+
+    .inner-footer {
+        background: $blue;
+        color: white;
+        min-height: rem(70px);
+        padding: rem(15px);
+    }
+
+    a {
+        color: white;
+    }
+
+    .footer-item,
+    .footer-social {
+        display: inline-block;
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+                .cercle {
+                    background: white;
+                }
+
+                .footer-icon::before {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+    .footer-item {
+        margin-right: rem(30px);
+
+        a {
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        .footer-icon {
+            font-size: rem(16px);
+            margin-right: rem(8px);
+            @include transition;
+        }
+
+        .footer-icon,
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .footer-social {
+
+        a {
+            display: inline-block;
+            height: rem(40px);
+            margin-left: rem(5px);
+            margin-right: rem(5px);
+            position: relative;
+            width: rem(36px);
+        }
+
+        .footer-icon {
+            left: 0;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background: $blue;
+            padding-top: 0.9em;
+            &:before {
+                font-size: rem(16px);
+            }
+        }
+    }
+    .footer-legal {
+        font-size: rem(12px);
+    }
+}
+
+// tablet version
+@media (max-width: $breakpoint-tablet) {
+    .pa-footer {
+        text-align: center;
+
+        .inner-footer {
+            .wrapper-inner {
+                > .ms-Stack {
+                    flex-flow: column;
+                }
+            }
+        }
+        
+        .footer-items,
+        .footer-socials {
+            margin-bottom: rem(15px);
+        }
+    }
+}
+
+// small mobile version
+@media (max-width: $breakpoint-mobile) {
+    .pa-footer {
+        padding-top: 0;
+    }
+}

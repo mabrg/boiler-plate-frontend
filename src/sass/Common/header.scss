@@ -1,0 +1,281 @@
+.pa-header {
+    height: rem(70px);
+    background-color: white;
+    border-bottom: rem(1px) solid $bordercolor;
+    left: 0;
+    padding: rem(5px) rem(15px);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    -webkit-box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.13), 0 0.3px 0.9px 0 rgba(0,0,0,0.11);
+    -moz-box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.13), 0 0.3px 0.9px 0 rgba(0,0,0,0.11);
+    box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.13), 0 0.3px 0.9px 0 rgba(0,0,0,0.11);
+}
+
+.logo-col {
+    width: rem(213px);
+    .img-logo {
+        margin-top: 0.7em!important;
+    }
+}
+
+.menu-asides-col {
+    margin-top: rem(5px);
+    width: 84.2%;
+}
+
+.menu-col {
+    .menu-burger {
+        display: none;
+    }
+
+    .menu-items {
+        display: flex;
+        list-style: none;
+
+        .menu-item {
+            margin-right: rem(40px);
+
+            a {
+                border-bottom: rem(2px) solid transparent;
+                display: inline-block;
+                padding-bottom: rem(10px);
+                padding-top: rem(10px);
+                @include transition;
+            }
+        }
+
+        .menu-icon {
+            font-size: rem(16px);
+            margin-right: rem(10px);
+        }
+
+        .menu-item-1 {
+            .menu-icon {
+                color: $green;
+            }
+
+            a:hover,
+            a:focus,
+            a.active {
+                border-bottom-color: $green;
+            }
+        }
+
+        .menu-item-2 {
+            .menu-icon {
+                color: $pink;
+            }
+
+            a:hover,
+            a:focus,
+            a.active {
+                border-bottom-color: $pink;
+            }
+        }
+
+        .menu-item-3 {
+            .menu-icon {
+                color: $blue;
+            }
+
+            a:hover,
+            a:focus,
+            a.active {
+                border-bottom-color: $blue;
+            }
+        }
+
+        .menu-item-4 {
+            .menu-icon {
+                color: $pablo;
+            }
+            a:hover,
+            a:focus,
+            a.active {
+                border-bottom-color: $pablo;
+            }
+        }
+
+        .menu-item-5 {
+            display: none;
+        }
+
+        .menu-icon,
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        span {
+            padding-top: rem(2px);
+        }
+    }
+}
+
+.asides-col {
+    .aside-items {
+        display: flex;
+
+        .aside-item {
+            // small mobile version
+            @media (max-width: $breakpoint-mobile) {
+                margin-left: rem(4px);
+            }
+
+            margin-left: rem(12px);
+            position: relative;
+
+            a {
+                display: inline-block;
+                height: rem(40px);
+                width: rem(40px);
+                @include transition;
+
+                &:hover,
+                &:focus {
+                    background-size: cover;
+
+                    .aside-icon {
+                        color: white;
+                    }
+
+                    .tooltip {
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+                }
+            }
+
+            .aside-icon {
+                background-size: 100%;
+                color: $blue;
+                font-size: rem(16px);
+                left: 50%;
+                line-height: 1;
+                margin-left: rem(-8px);
+                margin-top: rem(-10px);
+                position: absolute;
+                top: 50%;
+            }
+
+            &.aside-question {
+                .aside-icon {
+                    font-size: rem(24px);
+                    margin-left: rem(-12px);
+                    margin-top: rem(-15px);
+                }
+            }
+
+            &.aside-alert {
+                .nb {
+                    background: $pink;
+                    border-radius: 50%;
+                    color: white;
+                    display: inline-block;
+                    font-size: rem(9px);
+                    height: rem(14px);
+                    position: absolute;
+                    right: rem(5px);
+                    text-align: center;
+                    text-decoration: none;
+                    top: rem(6px);
+                    width: rem(14px);
+                }
+            }
+        }
+    }
+}
+
+// mobile version
+@media (max-width: $breakpoint-tablet) {
+    .pa-header {
+        height: rem(50px);
+        padding: rem(2px) rem(40px);
+
+        .wrapper-inner {
+            > .ms-Stack {
+                display: block;
+            }
+        }
+    }
+
+    .logo-col {
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu-asides-col {
+        margin-top: 0;
+
+        .aside-items {
+            .aside-item {
+                a {
+                    background-image: none;
+                    height: rem(30px);
+                    width: rem(30px);
+                }
+            }
+        }
+    }
+
+    .asides-col {
+        position: absolute;
+        right: rem(15px);
+        top: rem(7px);
+    }
+
+    .logo-col {
+        img {
+            width: rem(96px);
+        }
+        .img-logo {
+            margin-top: 0.5em!important;
+        }
+    }
+    .menu-col {
+
+        .menu {
+            display: none;
+        }
+
+        .menu-burger {
+            background-color: transparent;
+            border: 0;
+            display: block;
+            left: rem(15px);
+            min-width: auto;
+            padding: 0;
+            position: absolute;
+            top: rem(10px);
+
+            .nav-icon {
+                color: $blue;
+                font-size: rem(20px);
+            }
+
+            &.active {
+                + .menu {
+                    background: white;
+                    bottom: 0;
+                    display: block;
+                    left: 0;
+                    overflow: auto;
+                    padding: rem(15px);
+                    position: fixed;
+                    right: 0;
+                    top: rem(50px);
+                }
+            }
+        }
+
+        .menu-items {
+            display: block;
+            
+            .menu-item-5 {
+                display: block;
+            }
+        }
+    }
+}

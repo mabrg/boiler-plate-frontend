@@ -1,0 +1,510 @@
+@mixin visuallyhidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+}
+
+.visually-hidden {
+    @include visuallyhidden;
+}
+
+// desktop version
+@media (min-width: $breakpoint-tablet) {
+    .visually-hidden-desktop {
+        @include visuallyhidden;
+    }
+
+    .hidden-desktop {
+        display: none;
+    }
+}
+
+// from desktop medium version
+@media (min-width: $breakpoint-desktop-medium) {
+  .visually-hidden-desktop-medium {
+      @include visuallyhidden;
+  }
+
+  .hidden-desktop-medium {
+      display: none;
+  }
+}
+
+// until desktop medium version
+@media (max-width: $breakpoint-desktop-medium) {
+  .visually-hidden-until-desktop-medium {
+      @include visuallyhidden;
+  }
+
+  .hidden-until-desktop-medium {
+      display: none;
+  }
+}
+
+// mobile version
+@media (max-width: $breakpoint-tablet) {
+    .visually-hidden-mobile {
+        @include visuallyhidden;
+    }
+
+    .hidden-mobile {
+        display: none;
+    }
+}
+
+@mixin transition {
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -ms-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+}
+
+// freeze body when menu is opened
+.menu-opened {
+    overflow: hidden;
+}
+
+// titles
+h1 {
+    font-size: rem(32px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: rem(10px) 0 rem(15px) 0;
+}
+
+h2 {
+    font-size: rem(20px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: rem(12px) 0;
+}
+
+h3 {
+    font-size: rem(16px);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: rem(11px) 0;
+}
+
+// blocks
+.text-block,
+.table-block {
+    background-color: white;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.13), 0 0.3px 0.9px 0 rgba(0,0,0,0.11);
+    margin-bottom: rem(20px);
+    border-radius: rem(6px);
+}
+
+.text-block {
+    padding: rem(20px) rem(30px) rem(40px) rem(30px);
+
+    .requiredSection::after {
+      content: "*";
+      display: inline-block;
+      font-size: rem(20px);
+      font-weight: 400;
+    }
+}
+
+.sub-block {
+    margin-bottom: rem(30px);
+
+    &.with-border {
+        border-bottom: rem(1px) solid $lightgrey;
+        padding-bottom: rem(30px);
+    }
+}
+
+// blocks wrapper
+.blocks-wrapper {
+    align-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .text-block {
+        margin-bottom: rem(30px);
+        width: 48%;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        display: block;
+
+        .text-block {
+            width: auto;
+        }
+    }
+}
+
+// buttons
+.primary-button {
+    background-color: $blue; // default color
+    border: rem(1px) solid $blue; // default color
+
+    i,
+    .ms-Button-label {
+        color: white;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $darkblue; // default color
+        border-color: $darkblue; // default color
+    }
+
+    &:disabled {
+        background-color: $darkgreybutton;
+        border-color: $darkgreybutton;
+    }
+}
+
+.secondary-button {
+    background: white;
+    border: rem(1px) solid $blue; // default color
+
+    i,
+    .ms-Button-label {
+        color: $blue; // default color
+    }
+
+    &:hover,
+    &:focus {
+        background: white;
+        border-color: $darkblue; // default color
+
+        i,
+        .ms-Button-label {
+            color: $darkblue; // default color
+        }
+    }
+
+    &:disabled {
+        border-color: $darkgreybutton;
+
+        i,
+        .ms-Button-label {
+            color: $darkgreybutton;
+        }
+    }
+}
+
+.primary-button,
+.secondary-button {
+    cursor: pointer;
+    font-size: rem(14px);
+    font-weight: 700;
+    padding: 0 rem(12px);
+    text-align: left;
+    @include transition;
+
+    i {
+        font-size: rem(20px);
+        margin-right: rem(10px);
+    }
+}
+
+.primary-button,
+.secondary-button,
+.ms-Button--primary,
+.ms-Button--secondary,
+.ms-Button--default {
+    height: rem(40px);
+    border-radius: rem(6px);
+
+    .ms-Button-flexContainer {
+        span,
+        i {
+            align-self: center;
+        }
+    }
+}
+
+.popin {
+    > .ms-Label {
+        font-size: rem(26px);
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+
+        .ms-Button {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .action-buttons-left {
+            .ms-Button {
+                margin-right: rem(8px);
+            }
+        }
+    }
+}
+
+.link-button {
+    background: transparent;
+    border: none;
+    color: $darkgrey;
+    cursor: pointer;
+    font-size: rem(14px);
+    font-weight: 400;
+    @include transition;
+
+    .ms-Button-label {
+        text-decoration: underline;
+    }
+
+    i {
+        color: $darkgrey;
+        font-size: rem(20px);
+        margin-right: rem(10px);
+    }
+
+    &:hover {
+        background: transparent;
+        
+        .ms-Button-label {
+            text-decoration: none;
+        }
+    }
+}
+
+.layout-color2 {
+    .primary-button {
+        background-color: $pink;
+        border-color: $pink;
+
+        &:hover {
+            background-color: $darkpink;
+            border-color: $darkpink; 
+        }
+    }
+
+    .secondary-button {
+        border-color: $pink;
+
+        i,
+        .ms-Button-label {
+            color: $pink;
+        }
+
+        &:hover {
+            border-color: $darkpink;
+
+            i,
+            .ms-Button-label {
+                color: $darkpink;
+            }
+        }
+    }
+}
+
+.layout-color4 {
+  .primary-button {
+      background-color: $pablo;
+      border-color: $pablo;
+
+      &:hover {
+          background-color: $darkgrey;
+          border-color: $darkgrey; 
+      }
+  }
+
+  .secondary-button {
+      border-color: $pablo;
+
+      i,
+      .ms-Button-label {
+          color: $pablo;
+      }
+
+      &:hover {
+          border-color: $darkgrey;
+
+          i,
+          .ms-Button-label {
+              color: $darkgrey;
+          }
+      }
+  }
+
+  .ms-Dialog-action:last-of-type {
+    .ms-Button {
+        background-color: $pablo;
+        border-color: $pablo;
+
+        &:hover {
+            background-color: $darkgrey;
+            border-color: $darkgrey;
+      }
+    }
+  }
+
+  .ms-Nav-navItem {
+    .ms-Button::after {
+      border-left: rem(2px) solid $pablo;
+    }
+
+    .ms-Button:hover {
+      color: $pablo;
+    }
+  }
+
+  .ms-Toggle-background {
+    background: rgba(126, 118, 101, 0.7) none repeat scroll 0% 0%;
+  }
+
+  .ms-Toggle-background:hover {
+    background-color: $pablo;
+  }
+
+  .ms-BasePicker-text:hover {
+    border: rem(1px) solid $pablo !important;
+  }
+}
+
+// bees rating icons
+.ms-RatingStar-front,
+.ms-RatingStar-back {
+    color: transparent;
+    height: rem(16px);
+    width: rem(16px);
+    font-size: 0;
+
+    &:before {
+        color: $greybee;
+        content: '\e904';
+        display: inline-block;
+        font-family: 'icomoon';
+        font-size: rem(16px);
+    }
+}
+
+.ms-RatingStar-front {
+    &:before {
+        color: $yellowbee;
+    }
+}
+
+.ms-Rating-star {
+    &:hover {
+        .ms-Rating-button:enabled {
+            .ms-RatingStar-front,
+            .ms-RatingStar-back {
+                color: transparent;
+    
+                &:before {
+                    color: $yellowbee;
+                }
+            }
+        }
+
+        // bees after hovered button are grey
+        .ms-Rating-button:enabled {
+            &:hover {
+                ~ .ms-Rating-button {
+
+                    .ms-RatingStar-front,
+                    .ms-RatingStar-back {
+                        color: transparent;
+
+                        &:before {
+                            color: $greybee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// widths
+.half-width,
+.blocks-wrapper .half-width {
+    width: 48%;
+}
+
+.quarter-width,
+.blocks-wrapper .quarter-width {
+    width: 24%;
+}
+
+.three-quarter-width,
+.blocks-wrapper .three-quarter-width {
+    width: 72%;
+}
+
+.full-width,
+.blocks-wrapper .full-width {
+    width: 100%;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .half-width,
+    .quarter-width,
+    .three-quarter-width,
+    .blocks-wrapper .half-width,
+    .blocks-wrapper .quarter-width,
+    .blocks-wrapper .three-quarter-width {
+        width: 100%;
+    }
+}
+
+[data-selection-disabled] {
+    cursor: default;
+}
+
+.ms-TextField {
+    ol {
+        list-style: decimal;
+    }
+    ul {
+        list-style: disc;
+    }
+}
+
+.link-hover {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.color-blue,
+.color-blue a {
+    color: #5DB0C7;
+}
+
+.placeholder {
+    color: #5DB0C7;
+    border: 1px solid;
+    border-radius: rem(40px);
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: intrinsic;
+    padding: 0 rem(5px);
+    margin-top: rem(10px);
+    font-weight: 600;
+    font-size: rem(10px);
+    line-height: rem(20px);
+    span{
+        display: flex;
+        &::before {
+            content: "•";
+            width: rem(16px);
+            font-size: 2em;
+            vertical-align: sub;
+        }
+    }
+}
+
+.restricted {
+    opacity: 0.5;
+    pointer-events: none;
+}

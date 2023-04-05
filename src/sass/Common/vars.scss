@@ -1,0 +1,50 @@
+// color variables
+// main colors
+$blue: #168AC8;
+$darkblue: #213162;
+$pink: #F46754;
+$darkpink: #AB5E5E; //pas de correspondance dans CG
+$darkgrey: #323130;
+$mediumgrey: #605E5C;
+$lightgrey: #E7E7E7;
+$lightergrey1: #F4F4F4;
+$lightergrey2: #F7F7F7;
+$red: #D67C7D;
+$pablo: #645E51;
+
+// universe colors
+$green: #C7EAC4;
+$darkgreen: #8E9960; //pas de correspondance dans CG
+$orange: #EDC141;
+
+// other colors
+$brown: #7E7665;
+$saturatedblue: #49C5E8;
+$yellowbee: #FCEF8B;
+$greybee: #C8C6C4;
+$darkgreybutton: #B0AFAE;
+$white: #FFFFFF;
+$black: #000000;
+
+// backgrounds
+$lightyellow: #fbf6c0;
+$lightgreen: #eff5e6;
+
+// labels
+$brown2: #806449;
+$green2: #6db81c;
+
+// borders
+$bordercolor: #ECECEC;
+$lightbordercolor: #D0D0D0;
+
+// default texts
+$base-size: 16px;
+$font-default-family: poppins, Arial, sans-serif;
+$font-default-color: $darkgrey;
+
+// breakpoints
+$breakpoint-desktop-large: 1440px;
+$breakpoint-desktop-medium: 1024px;
+$breakpoint-tablet: 880px;
+$breakpoint-mobile: 480px;
