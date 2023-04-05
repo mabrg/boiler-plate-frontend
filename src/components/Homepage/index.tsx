@@ -13,6 +13,7 @@ const Homepage = (): JSX.Element => {
             <div>
                 <h2>Homepage</h2>
             </div>
+            JE SUIS HOME PAGE DE MACCCIIIIIIMMMMMMMEEEE
             {user && (
                 user.name
             )}

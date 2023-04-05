@@ -1,5 +1,5 @@
-import React, { lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import config, { ROUTES_IDS } from '../../../config';
 import Layout from '../Layout';
@@ -13,39 +13,24 @@ const NotFound = lazy(() => import('../NotFound'));
 const Tab = lazy(() => import('../Tab'));
 const ProtectedRoute = lazy(() => import('./ProtectedRoute'));
 
-const MyRouter = (): JSX.Element | null => {
-  const { token } = useUserInfo();
-  console.log('path tab', config.routes.home.path);
+const MyRoutes = 
+[
+	<Route path={config.routes[ROUTES_IDS.HOME].path} element={<Homepage/>}/>,
+	<Route path={config.routes[ROUTES_IDS.TAB].path} element={<Tab/>}/>,
+	<Route path='/test' element={<ProtectedRoute allowedRoles={['toto']}><Tab/></ProtectedRoute>}/>
+];
 
-  return (
-	<Router>
-		<Layout>
-			<Switch>
-				<Route path={config.routes.home.path}>
-					<Homepage />
-				</Route>
-				<Switch>
-					<ProtectedRoute 
-						path={config.routes[ROUTES_IDS.TAB].path}
-						element={<Tab />}
-					/>
-					{/* <ProtectedRoute
-						path={config.routes[ROUTES_IDS.DIRECTORY].path as string}
-						exact
-						component={Directory}
-					/> */}
-					{/* <ProtectedRoute
-						path={config.routes[ROUTES_IDS.MY_SUBSCRIPTIONS].path}
-						exact
-						component={MySubscriptions}
-						allowedRoles={['CHANNEL_SUBSCRIBER']}
-					/> */}
-				</Switch>
-				<Route path="*" element={<NotFound />} />
-			</Switch>
-		</Layout>
-	</Router>
-  );
+const MyRouter = (): JSX.Element => {
+	const { token, user } = useUserInfo();
+	return (
+		<BrowserRouter>
+			<Layout>
+				<Routes>
+					{MyRoutes}
+				</Routes>
+			</Layout>
+     	</BrowserRouter>
+	);
 };
 
 export default MyRouter;

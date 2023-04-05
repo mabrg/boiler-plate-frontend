@@ -17,6 +17,7 @@ function TabContainer(): JSX.Element {
 
     return (
         <>
+            <p>Là, c'est le banquet des chefs de clan</p>
             <Tab 
                 items={tabItems}
             />

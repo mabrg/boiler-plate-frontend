@@ -1,37 +1,36 @@
 import React from 'react';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import { Route, RouteProps, redirect, Navigate, Outlet } from 'react-router-dom';
+import config, { ROUTES_IDS } from '../../../../config';
 
 import { useUserAllowedRoles } from '../../utils/hooks/useUserAllowedRoles';
 import { useUserInfo } from '../../utils/hooks/useUserInfo';
 
 type ProtectedRouteProps = RouteProps & {
   allowedRoles?: string[];
+  children: JSX.Element;
 };
 
 const ProtectedRoute = ({
   allowedRoles = [],
-  ...props
+  children,
 }: ProtectedRouteProps): JSX.Element => {
   const { token, user } = useUserInfo();
   const isAuthorized = useUserAllowedRoles(...allowedRoles);
-  console.log(props)
+
+  console.log(allowedRoles)
 
   if (
     !token ||
-    !user ||
+    !(user) ||
     !(allowedRoles.length === 0 || isAuthorized)
   ) {
     return (
-      <Redirect
-        to={{
-          pathname: '/',
-        }}
-      />
+      <Navigate to={config.routes[ROUTES_IDS.HOME].path}/>
     );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return <Route {...props} />;
+  return children;
 };
 
 export default ProtectedRoute;
