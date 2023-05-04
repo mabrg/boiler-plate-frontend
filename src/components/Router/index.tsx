@@ -15,9 +15,9 @@ const ProtectedRoute = lazy(() => import('./ProtectedRoute'));
 
 const MyRoutes = 
 [
-	<Route path={config.routes[ROUTES_IDS.HOME].path} element={<Homepage/>}/>,
-	<Route path={config.routes[ROUTES_IDS.TAB].path} element={<Tab/>}/>,
-	<Route path='/test' element={<ProtectedRoute allowedRoles={['toto']}><Tab/></ProtectedRoute>}/>
+	<Route path={config.routes[ROUTES_IDS.HOME].path} element={<Homepage/>} key={ROUTES_IDS.HOME}/>,
+	<Route path={config.routes[ROUTES_IDS.TAB].path} element={<Tab/>} key={ROUTES_IDS.TAB}/>,
+	<Route path='/test' element={<ProtectedRoute allowedRoles={['toto']}><Tab/></ProtectedRoute>} key="test"/>
 ];
 
 const MyRouter = (): JSX.Element => {
