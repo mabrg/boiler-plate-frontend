@@ -1,5 +1,4 @@
-import React from 'react';
-import { Route, RouteProps, redirect, Navigate, Outlet } from 'react-router-dom';
+import { RouteProps, Navigate } from 'react-router-dom';
 import config, { ROUTES_IDS } from '../../../../config';
 
 import { useUserAllowedRoles } from '../../utils/hooks/useUserAllowedRoles';

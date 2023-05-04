@@ -1,5 +1,5 @@
-import { FontIcon, PrimaryButton, Stack } from '@fluentui/react';
-import React, { memo } from 'react';
+import { FontIcon, Stack } from '@fluentui/react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import config, { ROUTES_IDS } from '../../../../config';

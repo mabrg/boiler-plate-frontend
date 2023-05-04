@@ -5,6 +5,7 @@ export const mapTabItems = (data? : ITabItem[]) : ITabItem[] => {
 
     return data.map(
         (item): ITabItem => ({
+            id: item?.id, 
             name: item?.name,
             first_name: item?.first_name,
         }),

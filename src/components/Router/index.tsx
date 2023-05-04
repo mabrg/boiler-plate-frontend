@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import config, { ROUTES_IDS } from '../../../config';
 import Layout from '../Layout';
